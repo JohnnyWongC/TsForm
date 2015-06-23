@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script src="jquery-1.11.0.js" type="text/javascript"></script>
+    <script src="jquery.TsForm.js" type="text/javascript"></script>
+</head>
+<body>
+	<div id="form">
+		帐号:<input type="text" minlength="1" maxlength="20" ph="请输入账号" em="帐号不能为空" rg="AC" rgem="帐号格式不正确,只能包含大小写数字横杆下划线的20位以内的字符" tabindex="1"><br>
+		编号:<span dv="0" em="编号不能为0" tabindex="2">0</span>&nbsp;&nbsp;&nbsp;<input type="button" id="btn" value="改变编号" onclick="javascript:$('[dv]').text(parseInt(Math.random()*10));"><br>
+		姓名:<input type="text" minlength="3" maxlength="3" em="姓名必须为三个字" rge="/^abc$/" rgem="姓名只能为abc" tabindex="3"><br>
+		固话:<input type="text" maxlength="20" cp="ie:txtHP" cpem="固话和手机必须选填一项" rg="Phone" rgem="固话格式不正确" tabindex="4"><br>
+		手机:<input id="txtHP" type="text" maxlength="11" rg="HP" rgem="手机格式不正确" tabindex="5"><br>
+		密码:<input type="password" minlength="6" maxlength="20" ph="请输入密码" em="密码长度为6-20位字符" rg="PW" rgem="密码格式不正确,不能包含空格" tabindex="6"><br>
+		确认密码:<input type="password" minlength="6" maxlength="20" ph="请输入确认密码" em="确认密码长度为6-20位字符" rg="PW" rgem="密码格式不正确,不能包含空格" pwem="确认密码和密码不一致" tabindex="7"><br>
+		性别:<input type="radio" name="rdSex" checked="checked" tabindex="8">男<input type="radio" name="rdSex">女<br>
+		状态:<select tabindex="9">
+				<option>学生</option>
+				<option>职员</option>
+				<option>待业</option>
+			</select>
+			<br/>
+		待遇:<select em="请选择待遇" tabindex="10">
+				<option>请选择</option>
+				<option>0</option>
+				<option>3000</option>
+				<option>3500</option>
+				<option>4000</option>
+			</select>
+			<br/>
+		生日:<input type="radio" name="rdYear" checked="checked" tabindex="11">上半年<input type="radio" name="rdYear">下半年<br>
+		爱好:<input type="checkbox" name="cbkHoppy" minlength="1" maxlength="3" em="最少选择一个爱好" maxem="最多选择3个爱好" tabindex="12">羽毛球<input type="checkbox" name="cbkHoppy">篮球<input type="checkbox" name="cbkHoppy">游泳<input type="checkbox" name="cbkHoppy">跑步<input type="checkbox" name="cbkHoppy">登山<br>
+		擅长:<input type="checkbox" name="cbkGood" maxlength="2" em="最多只能选择2项擅长的" tabindex="13">羽毛球<input type="checkbox" name="cbkGood">篮球<input type="checkbox" name="cbkGood">游泳<input type="checkbox" name="cbkGood">跑步<input type="checkbox" name="cbkGood">登山<br>
+		内容:<textarea ph="请输入内容" em="内容不能为空" tabindex="14"></textarea>
+		<br>
+		<input id="btnSubmit" type="button" value="提交">
+		<input id="btnReset" type="button" value="重置">
+	</div>
+	<script type="text/javascript">
+	$(function(){
+		$("#btnSubmit").click(function(event) {
+			if($("#form").TsForm()){
+				alert("成功通过验证,现在提交表单");
+			}
+		});
+		$("#btnReset").click(function(event) {
+			$("#form").TsFormReset();
+		});
+	});
+	</script>
+</body>
+</html>
